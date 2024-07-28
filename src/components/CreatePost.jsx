@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import Navbar from './Navbar'
 
 const CreatePost = () => {
     const [input,setInput]=useState(
@@ -15,11 +16,7 @@ const CreatePost = () => {
     }
 const readValue=(event)=>{
     console.log(input)
-    axios.post("http://localhost:3030/create",input,
-        {
-            headers:{"token":sessionStorage.getItem("token"),"Content-Type":"application/json"}
-        }
-    ).then(
+    axios.post("http://localhost:3030/create",input,{headers:{"token":sessionStorage.getItem("token"),"Content-Type":"application/json"}}).then(
         (response)=>{
             if (response.data.status=="success") {
                 alert("posted successfully")
@@ -40,6 +37,7 @@ const readValue=(event)=>{
     
   return (
     <div>
+        <Navbar/>
         <div className="container">
             <div className="row">
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
